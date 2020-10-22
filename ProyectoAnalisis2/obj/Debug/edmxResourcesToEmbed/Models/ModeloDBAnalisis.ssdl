@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Analigrupo5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="T_Clientes">
+    <Key>
+      <PropertyRef Name="Id_cliente" />
+    </Key>
+    <Property Name="Id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="varchar" MaxLength="50" />
+    <Property Name="Nit" Type="varchar" MaxLength="12" />
+    <Property Name="Telefono" Type="int" />
+  </EntityType>
+  <EntityType Name="T_color">
+    <Key>
+      <PropertyRef Name="Id_Color" />
+    </Key>
+    <Property Name="Id_Color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_Color" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_Detalle">
+    <Key>
+      <PropertyRef Name="Id_Detalle" />
+    </Key>
+    <Property Name="Id_Detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Factura" Type="int" />
+    <Property Name="Id_Producto" Type="int" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Precio" Type="int" />
+  </EntityType>
+  <EntityType Name="T_Empleados">
+    <Key>
+      <PropertyRef Name="Id_Empleado" />
+    </Key>
+    <Property Name="Id_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Primer_Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Segundo_Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Tercer_Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Primer_Apellido" Type="varchar" MaxLength="30" />
+    <Property Name="Segundo_Apellido" Type="varchar" MaxLength="30" />
+    <Property Name="Apellido_casado" Type="varchar" MaxLength="30" />
+    <Property Name="Telefono" Type="int" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" />
+    <Property Name="Nit" Type="int" />
+    <Property Name="Fecha_nacimiento" Type="date" />
+    <Property Name="Fecha_ingreso" Type="date" />
+  </EntityType>
+  <EntityType Name="T_Factura">
+    <Key>
+      <PropertyRef Name="Id_Factura" />
+    </Key>
+    <Property Name="Id_Factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Cliente" Type="int" />
+    <Property Name="Id_Empleado" Type="int" />
+    <Property Name="Fecha" Type="date" />
+  </EntityType>
+  <EntityType Name="T_Motorista">
+    <Key>
+      <PropertyRef Name="Id_motorista" />
+    </Key>
+    <Property Name="Id_motorista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Empleado" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Placa" Type="varchar" MaxLength="6" />
+    <Property Name="Estado" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="T_Nivel">
+    <Key>
+      <PropertyRef Name="Id_Nivel" />
+    </Key>
+    <Property Name="Id_Nivel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_tipo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_Producto">
+    <Key>
+      <PropertyRef Name="Id_producto" />
+    </Key>
+    <Property Name="Id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_tipo" Type="int" />
+    <Property Name="Id_Color" Type="int" />
+    <Property Name="Id_Proveedor" Type="int" />
+    <Property Name="Nombre_oproducto" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Fecha_ingreso" Type="date" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="imagen" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="T_Proveedor">
+    <Key>
+      <PropertyRef Name="Id_proveedor" />
+    </Key>
+    <Property Name="Id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_proveedor" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="telefono" Type="int" />
+    <Property Name="Nit" Type="varchar" MaxLength="12" />
+    <Property Name="Direccion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_Tipo">
+    <Key>
+      <PropertyRef Name="Id_tipo" />
+    </Key>
+    <Property Name="Id_tipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_tipo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_Usuarios">
+    <Key>
+      <PropertyRef Name="Id_usuario" />
+    </Key>
+    <Property Name="Id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Empleado" Type="int" />
+    <Property Name="Id_Nivel" Type="int" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="Passw" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="Fk_Det_Fac">
+    <End Role="T_Factura" Type="Self.T_Factura" Multiplicity="0..1" />
+    <End Role="T_Detalle" Type="Self.T_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Factura">
+        <PropertyRef Name="Id_Factura" />
+      </Principal>
+      <Dependent Role="T_Detalle">
+        <PropertyRef Name="Id_Factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Det_Prod">
+    <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="0..1" />
+    <End Role="T_Detalle" Type="Self.T_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Producto">
+        <PropertyRef Name="Id_producto" />
+      </Principal>
+      <Dependent Role="T_Detalle">
+        <PropertyRef Name="Id_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Emp_Mot">
+    <End Role="T_Empleados" Type="Self.T_Empleados" Multiplicity="0..1" />
+    <End Role="T_Motorista" Type="Self.T_Motorista" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Empleados">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="T_Motorista">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Fac_Cli">
+    <End Role="T_Clientes" Type="Self.T_Clientes" Multiplicity="0..1" />
+    <End Role="T_Factura" Type="Self.T_Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Clientes">
+        <PropertyRef Name="Id_cliente" />
+      </Principal>
+      <Dependent Role="T_Factura">
+        <PropertyRef Name="Id_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Fac_Emp">
+    <End Role="T_Empleados" Type="Self.T_Empleados" Multiplicity="0..1" />
+    <End Role="T_Factura" Type="Self.T_Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Empleados">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="T_Factura">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Pro_Col">
+    <End Role="T_color" Type="Self.T_color" Multiplicity="0..1" />
+    <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_color">
+        <PropertyRef Name="Id_Color" />
+      </Principal>
+      <Dependent Role="T_Producto">
+        <PropertyRef Name="Id_Color" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Pro_Prov">
+    <End Role="T_Proveedor" Type="Self.T_Proveedor" Multiplicity="0..1" />
+    <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Proveedor">
+        <PropertyRef Name="Id_proveedor" />
+      </Principal>
+      <Dependent Role="T_Producto">
+        <PropertyRef Name="Id_Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Pro_tip">
+    <End Role="T_Tipo" Type="Self.T_Tipo" Multiplicity="0..1" />
+    <End Role="T_Producto" Type="Self.T_Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Tipo">
+        <PropertyRef Name="Id_tipo" />
+      </Principal>
+      <Dependent Role="T_Producto">
+        <PropertyRef Name="Id_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Usu_Emp">
+    <End Role="T_Empleados" Type="Self.T_Empleados" Multiplicity="0..1" />
+    <End Role="T_Usuarios" Type="Self.T_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Empleados">
+        <PropertyRef Name="Id_Empleado" />
+      </Principal>
+      <Dependent Role="T_Usuarios">
+        <PropertyRef Name="Id_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Usu_Niv">
+    <End Role="T_Nivel" Type="Self.T_Nivel" Multiplicity="0..1" />
+    <End Role="T_Usuarios" Type="Self.T_Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Nivel">
+        <PropertyRef Name="Id_Nivel" />
+      </Principal>
+      <Dependent Role="T_Usuarios">
+        <PropertyRef Name="Id_Nivel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Analigrupo5ModelStoreContainer">
+    <EntitySet Name="T_Clientes" EntityType="Self.T_Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_color" EntityType="Self.T_color" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Detalle" EntityType="Self.T_Detalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Empleados" EntityType="Self.T_Empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Factura" EntityType="Self.T_Factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Motorista" EntityType="Self.T_Motorista" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Nivel" EntityType="Self.T_Nivel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Producto" EntityType="Self.T_Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Proveedor" EntityType="Self.T_Proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Tipo" EntityType="Self.T_Tipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Usuarios" EntityType="Self.T_Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Fk_Det_Fac" Association="Self.Fk_Det_Fac">
+      <End Role="T_Factura" EntitySet="T_Factura" />
+      <End Role="T_Detalle" EntitySet="T_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Det_Prod" Association="Self.Fk_Det_Prod">
+      <End Role="T_Producto" EntitySet="T_Producto" />
+      <End Role="T_Detalle" EntitySet="T_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Emp_Mot" Association="Self.Fk_Emp_Mot">
+      <End Role="T_Empleados" EntitySet="T_Empleados" />
+      <End Role="T_Motorista" EntitySet="T_Motorista" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Fac_Cli" Association="Self.Fk_Fac_Cli">
+      <End Role="T_Clientes" EntitySet="T_Clientes" />
+      <End Role="T_Factura" EntitySet="T_Factura" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Fac_Emp" Association="Self.Fk_Fac_Emp">
+      <End Role="T_Empleados" EntitySet="T_Empleados" />
+      <End Role="T_Factura" EntitySet="T_Factura" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Pro_Col" Association="Self.Fk_Pro_Col">
+      <End Role="T_color" EntitySet="T_color" />
+      <End Role="T_Producto" EntitySet="T_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Pro_Prov" Association="Self.Fk_Pro_Prov">
+      <End Role="T_Proveedor" EntitySet="T_Proveedor" />
+      <End Role="T_Producto" EntitySet="T_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Pro_tip" Association="Self.Fk_Pro_tip">
+      <End Role="T_Tipo" EntitySet="T_Tipo" />
+      <End Role="T_Producto" EntitySet="T_Producto" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Usu_Emp" Association="Self.Fk_Usu_Emp">
+      <End Role="T_Empleados" EntitySet="T_Empleados" />
+      <End Role="T_Usuarios" EntitySet="T_Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Usu_Niv" Association="Self.Fk_Usu_Niv">
+      <End Role="T_Nivel" EntitySet="T_Nivel" />
+      <End Role="T_Usuarios" EntitySet="T_Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

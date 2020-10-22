@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Analigrupo5ModelStoreContainer" CdmEntityContainer="Analigrupo5Entities">
+    <EntitySetMapping Name="T_Clientes">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Clientes">
+        <MappingFragment StoreEntitySet="T_Clientes">
+          <ScalarProperty Name="Id_cliente" ColumnName="Id_cliente" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_color">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_color">
+        <MappingFragment StoreEntitySet="T_color">
+          <ScalarProperty Name="Id_Color" ColumnName="Id_Color" />
+          <ScalarProperty Name="Descripcion_Color" ColumnName="Descripcion_Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Detalle">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Detalle">
+        <MappingFragment StoreEntitySet="T_Detalle">
+          <ScalarProperty Name="Id_Detalle" ColumnName="Id_Detalle" />
+          <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
+          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Empleados">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Empleados">
+        <MappingFragment StoreEntitySet="T_Empleados">
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+          <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+          <ScalarProperty Name="Tercer_Nombre" ColumnName="Tercer_Nombre" />
+          <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+          <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+          <ScalarProperty Name="Apellido_casado" ColumnName="Apellido_casado" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="Fecha_nacimiento" ColumnName="Fecha_nacimiento" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Factura">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Factura">
+        <MappingFragment StoreEntitySet="T_Factura">
+          <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Motorista">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Motorista">
+        <MappingFragment StoreEntitySet="T_Motorista">
+          <ScalarProperty Name="Id_motorista" ColumnName="Id_motorista" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Placa" ColumnName="Placa" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Nivel">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Nivel">
+        <MappingFragment StoreEntitySet="T_Nivel">
+          <ScalarProperty Name="Id_Nivel" ColumnName="Id_Nivel" />
+          <ScalarProperty Name="Descripcion_tipo" ColumnName="Descripcion_tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Producto">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Producto">
+        <MappingFragment StoreEntitySet="T_Producto">
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="Id_producto" ColumnName="Id_producto" />
+          <ScalarProperty Name="Id_tipo" ColumnName="Id_tipo" />
+          <ScalarProperty Name="Id_Color" ColumnName="Id_Color" />
+          <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
+          <ScalarProperty Name="Nombre_oproducto" ColumnName="Nombre_oproducto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Proveedor">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Proveedor">
+        <MappingFragment StoreEntitySet="T_Proveedor">
+          <ScalarProperty Name="Id_proveedor" ColumnName="Id_proveedor" />
+          <ScalarProperty Name="Nombre_proveedor" ColumnName="Nombre_proveedor" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Tipo">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Tipo">
+        <MappingFragment StoreEntitySet="T_Tipo">
+          <ScalarProperty Name="Id_tipo" ColumnName="Id_tipo" />
+          <ScalarProperty Name="Descripcion_tipo" ColumnName="Descripcion_tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Usuarios">
+      <EntityTypeMapping TypeName="Analigrupo5Model.T_Usuarios">
+        <MappingFragment StoreEntitySet="T_Usuarios">
+          <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario" />
+          <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+          <ScalarProperty Name="Id_Nivel" ColumnName="Id_Nivel" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Passw" ColumnName="Passw" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

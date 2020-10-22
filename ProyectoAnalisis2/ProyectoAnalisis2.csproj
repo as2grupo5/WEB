@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -121,8 +129,57 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\T_ProductoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloDBAnalisis.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDBAnalisis.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloDBAnalisis.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeloDBAnalisis.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloDBAnalisis.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Clientes.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_color.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Detalle.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Empleados.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Factura.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Motorista.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Nivel.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Producto.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Proveedor.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Tipo.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\T_Usuarios.cs">
+      <DependentUpon>ModeloDBAnalisis.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -135,8 +192,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\ModeloDBAnalisis.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModeloDBAnalisis.Context.cs</LastGenOutput>
+      <DependentUpon>ModeloDBAnalisis.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ModeloDBAnalisis.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloDBAnalisis.edmx</DependentUpon>
+      <LastGenOutput>ModeloDBAnalisis.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ModeloDBAnalisis.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloDBAnalisis.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModeloDBAnalisis.edmx.diagram">
+      <DependentUpon>ModeloDBAnalisis.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -162,10 +236,18 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\T_Producto\Create.cshtml" />
+    <Content Include="Views\T_Producto\Delete.cshtml" />
+    <Content Include="Views\T_Producto\Details.cshtml" />
+    <Content Include="Views\T_Producto\Edit.cshtml" />
+    <Content Include="Views\T_Producto\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\T_Producto\Servicios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\T_Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -179,6 +261,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

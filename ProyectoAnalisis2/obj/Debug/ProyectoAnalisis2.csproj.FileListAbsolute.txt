@@ -51,6 +51,8 @@ C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\roslyn\vbc.rsp
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\roslyn\VBCSCompiler.exe
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\Antlr3.Runtime.dll
+C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\EntityFramework.dll
+C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\EntityFramework.SqlServer.dll
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\Newtonsoft.Json.dll
@@ -62,6 +64,8 @@ C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\System.Web.WebPages.Deployment.
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\System.Web.WebPages.dll
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\System.Web.WebPages.Razor.dll
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\WebGrease.dll
+C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\EntityFramework.xml
+C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\EntityFramework.SqlServer.xml
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\System.Web.Helpers.xml
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\System.Web.Mvc.xml
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\System.Web.Optimization.xml
@@ -79,8 +83,8 @@ C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\es\System.Web.Razor.resources.d
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\es\System.Web.WebPages.resources.dll
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\obj\Debug\ProyectoAnalisis2.csprojAssemblyReference.cache
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\obj\Debug\ProyectoAnalisis2.csproj.CoreCompileInputs.cache
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\obj\Debug\ProyectoAnalisis2.csproj.CopyComplete
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\obj\Debug\ProyectoAnalisis2.dll
 C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\obj\Debug\ProyectoAnalisis2.pdb
+C:\Users\pablo\Desktop\WEB\ProyectoAnalisis2\obj\Debug\ProyectoAnalisis2.csprojAssemblyReference.cache

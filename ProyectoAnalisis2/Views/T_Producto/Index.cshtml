@@ -1,0 +1,157 @@
+﻿@model IEnumerable<ProyectoAnalisis2.Models.T_Producto>
+
+@{
+    ViewBag.Title = "Productos";
+}
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 40%;
+        border-radius: 5px;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    img {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .container {
+        padding: 2px 16px;
+    }
+</style>
+<h2>Listado de productos</h2>
+<hr />
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_oproducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha_ingreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.T_color.Descripcion_Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.T_Proveedor.Nombre_proveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.T_Tipo.Descripcion_tipo)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_oproducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_ingreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_color.Descripcion_Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_Proveedor.Nombre_proveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.T_Tipo.Descripcion_tipo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id_producto }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id_producto }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id_producto })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+<div class="row">
+    @*<div class="col-12">*@
+    @foreach (var item in Model)
+    {
+        <div class="col-3 container">
+            <div class="card container">
+                <hr />
+                <div style="align-content:center; text-align:center">
+                    <img class="text-center" src="@item.imagen" alt="Avatar" style="width:50%;height:50%;align-content:center">
+                </div>
+                <hr />
+                <div class="container">
+                    <h4><b>@item.Nombre_oproducto</b></h4>
+                    <p><b>Descripción:</b> @item.Descripcion</p>
+                    <p><b>Cantidad:</b> @item.Cantidad</p>
+                </div>
+                <hr />
+                <div style="align-content:center; text-align:center">
+                    <a data-toggle="modal" data-id="@item.Id_producto" class="open-ComprarModal btn btn-lg btn-success" href="#comprar"><span class="glyphicon glyphicon-credit-card"></span> Comprar</a>
+                </div>
+                <hr />
+            </div>
+        </div>
+    }
+    @*</div>*@
+</div>
+<!-- Modal -->
+<div class="modal fade" id="comprar">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Comprar producto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <input hidden type="number" name="productoId" id="productoId" value=""/>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Cantidad:</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" id="cantidad" name="cantidad">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="button" class="btn btn-success" id="btn_comprar"> Confirmar compra</button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $("#btn_comprar").click(function () {
+                        var idProducto = $("#productoId").val();
+                        console.log("Comprado", idProducto);
+                    });
+                </script>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).on("click", ".open-ComprarModal", function () {
+        var idProducto = $(this).data('id');
+        $(".modal-body #productoId").val(idProducto);
+    });
+</script>
