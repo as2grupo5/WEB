@@ -123,11 +123,23 @@
             </div>
             <div class="modal-body">
                 <div class="form-horizontal">
-                    <input hidden type="number" name="productoId" id="productoId" value=""/>
+                    <input hidden type="number" name="productoId" id="productoId" value="" />
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Cliente</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("id_cliente", (IEnumerable<SelectListItem>)ViewBag.clientes, new { id = "id_cliente", @class = "form-control" })
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="control-label col-md-2">Cantidad:</label>
                         <div class="col-md-10">
-                            <input class="form-control" type="number" id="cantidad" name="cantidad">
+                            <input class="form-control" type="number" id="cantidad" name="cantidad" size="5">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Precio:</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="number" id="precio" name="precio" size="5">
                         </div>
                     </div>
                     <div class="form-group">
@@ -138,8 +150,24 @@
                 </div>
                 <script>
                     $("#btn_comprar").click(function () {
-                        var idProducto = $("#productoId").val();
-                        console.log("Comprado", idProducto);
+                        var id_producto = $("#productoId").val();
+                        var cantidad = $("#cantidad").val();
+                        var id_cliente = $("#id_cliente").val();
+                        var precio = $("#precio").val();
+                        console.log("id_cliente", id_cliente);
+                        $.ajax({
+                            url: '@Url.Action("Facturar")',
+                            data: { id_producto, cantidad, id_cliente, precio },
+                            type: "POST",
+                            success: function (data, status) {
+                                $('#comprar').modal('hide');
+                                alert("Compra realizada con éxito");
+                                window.location.reload();
+                            },
+                            error: function () {
+                                alert("Error al realizar la compra");
+                            }
+                        });
                     });
                 </script>
             </div>

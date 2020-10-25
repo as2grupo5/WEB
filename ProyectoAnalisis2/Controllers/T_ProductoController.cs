@@ -19,6 +19,7 @@ namespace ProyectoAnalisis2.Controllers
         public ActionResult Index()
         {
             List<T_Producto> productos = db.T_Producto.Where(x=>x.Cantidad>0 && x.Id_tipo==1).ToList();
+            ViewBag.clientes = new SelectList(db.T_Clientes, "Id_cliente", "Nombre_Cliente");
             return View(productos);
         }
 
@@ -26,6 +27,7 @@ namespace ProyectoAnalisis2.Controllers
         public ActionResult Servicios()
         {
             List<T_Producto> productos = db.T_Producto.Where(x => x.Cantidad > 0 && x.Id_tipo == 2).ToList();
+            ViewBag.clientes = new SelectList(db.T_Clientes, "Id_cliente", "Nombre_Cliente");
             return View(productos);
         }
 
@@ -76,6 +78,40 @@ namespace ProyectoAnalisis2.Controllers
             ViewBag.Id_Proveedor = new SelectList(db.T_Proveedor, "Id_proveedor", "Nombre_proveedor", t_Producto.Id_Proveedor);
             ViewBag.Id_tipo = new SelectList(db.T_Tipo, "Id_tipo", "Descripcion_tipo", t_Producto.Id_tipo);
             return View(t_Producto);
+        }
+
+        // POST: Comercializacion/Gastos_Costos_Fijos_Mes_Anio/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        public ActionResult Facturar(int? id_producto, int? cantidad, int? id_cliente, int? precio)
+        {
+            T_Factura factura = new T_Factura();
+            if (ModelState.IsValid)
+            {
+                //inserta factura
+                factura.Id_Empleado = 1;
+                factura.Id_Cliente = id_cliente;
+                factura.Fecha = DateTime.Now;
+                db.T_Factura.Add(factura);
+                db.SaveChanges();
+                //edita cantidad del producto
+                T_Producto productoEdit = db.T_Producto.Find(id_producto);
+                productoEdit.Cantidad = productoEdit.Cantidad-cantidad;
+                db.Entry(productoEdit).State = EntityState.Modified;
+                db.SaveChanges();
+                //obtiene el id de la factura insertada
+                int facturaId = db.T_Factura.Max(item => item.Id_Factura);
+                //inserta el detalle de la factura
+                T_Detalle detalle_factura = new T_Detalle();
+                detalle_factura.Id_Factura = facturaId;
+                detalle_factura.Id_Producto = id_producto;
+                detalle_factura.Cantidad = cantidad;
+                detalle_factura.Precio = precio;
+                db.T_Detalle.Add(detalle_factura);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(factura);
         }
 
         // GET: T_Producto/Edit/5
